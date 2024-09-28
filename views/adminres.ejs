@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Add Team Scores & Top Performers</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Add Team Scores & Top Performers</h1>
+        <form action="/result" method="POST">
+            <!-- Team Scores -->
+            <div class="mb-3">
+                <label for="teamA" class="form-label">BIDAR</label>
+                <input type="number" class="form-control" id="teamA" name="teamA" required>
+            </div>
+            <div class="mb-3">
+                <label for="teamB" class="form-label">BIJAPUR</label>
+                <input type="number" class="form-control" id="teamB" name="teamB" required>
+            </div>
+            <div class="mb-3">
+                <label for="teamC" class="form-label">GULBERGA</label>
+                <input type="number" class="form-control" id="teamC" name="teamC" required>
+            </div>
+            <div class="mb-3">
+                <label for="teamD" class="form-label">DECCAN</label>
+                <input type="number" class="form-control" id="teamD" name="teamD" required>
+            </div>
+
+            <!-- Top Performers -->
+            <h3 class="mt-4">Top Performers</h3>
+
+            <!-- Bidaya -->
+            <div class="mb-3">
+                <label for="bidayatopper" class="form-label">Bidaya Topper</label>
+                <input type="text" class="form-control" id="bidayatopper" name="bidayatopper" required>
+            </div>
+            <div class="mb-3">
+                <label for="bidayatopperscore" class="form-label">Bidaya Topper Score</label>
+                <input type="number" class="form-control" id="bidayatopperscore" name="bidayatopperscore" required>
+            </div>
+
+            <!-- Uoola -->
+            <div class="mb-3">
+                <label for="uoolatopper" class="form-label">Uoola Topper</label>
+                <input type="text" class="form-control" id="uoolatopper" name="uoolatopper" required>
+            </div>
+            <div class="mb-3">
+                <label for="uoolatopperscore" class="form-label">Uoola Topper Score</label>
+                <input type="number" class="form-control" id="uoolatopperscore" name="uoolatopperscore" required>
+            </div>
+
+            <!-- Thaniya -->
+            <div class="mb-3">
+                <label for="thaniyatopper" class="form-label">Thaniya Topper</label>
+                <input type="text" class="form-control" id="thaniyatopper" name="thaniyatopper" required>
+            </div>
+            <div class="mb-3">
+                <label for="thaniyatopperscore" class="form-label">Thaniya Topper Score</label>
+                <input type="number" class="form-control" id="thaniyatopperscore" name="thaniyatopperscore" required>
+            </div>
+
+            <!-- Thabawiyaya -->
+            <div class="mb-3">
+                <label for="thabawiyayatopper" class="form-label">Thabawiyaya Topper</label>
+                <input type="text" class="form-control" id="thabawiyayatopper" name="thabawiyayatopper" required>
+            </div>
+            <div class="mb-3">
+                <label for="thabawiyatopperscore" class="form-label">Thabawiyaya Topper Score</label>
+                <input type="number" class="form-control" id="thabawiyatopperscore" name="thanawiyatopperscore" required>
+            </div>
+
+            <!-- Aliyya -->
+            <div class="mb-3">
+                <label for="aliyyatopper" class="form-label">Aliyya Topper</label>
+                <input type="text" class="form-control" id="aliyyatopper" name="aliyyatopper" required>
+            </div>
+            <div class="mb-3">
+                <label for="aliyatopperscore" class="form-label">Aliyya Topper Score</label>
+                <input type="number" class="form-control" id="aliyatopperscore" name="aliyatopperscore" required>
+            </div>
+
+            <!-- Kulliya -->
+            <div class="mb-3">
+                <label for="kulliyatopper" class="form-label">Kulliya Topper</label>
+                <input type="text" class="form-control" id="kulliyatopper" name="kulliyatopper" required>
+            </div>
+            <div class="mb-3">
+                <label for="kulliyatopperscore" class="form-label">Kulliya Topper Score</label>
+                <input type="number" class="form-control" id="kulliyatopperscore" name="kulliyatopperscore" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

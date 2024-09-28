@@ -1,0 +1,639 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Result</title>
+  <link rel="icon" type="image/png" sizes="20x20" href="/images/NOOR-SHOW-LOGO-PNG.png">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+   
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+    *{
+      padding: 0;
+      margin: 0;
+      font-family: 'poppins', sans-serif;
+      box-sizing: border-box;
+    }
+
+    header{
+      width: 100%;
+      height: 14vh;
+      overflow: hidden;
+      background-color: white;
+    }
+
+    nav{
+      width: 100%;
+      height: 14vh;
+      position: sticky;
+      background-color: white;
+      z-index: 1000;
+    }
+
+    .nav-container{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .logo{
+      color: black;
+      font-size: 1rem;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    .logo span{
+      color: #30a8e5;
+      text-shadow: 0 0 10px #30a8e5;
+    }
+
+    .bell-icon {
+      font-size: 1.5rem;
+      color: red;
+      display: inline-block;
+      position: relative;
+    }
+
+    .bell-icon i {
+      font-size: 1.8rem;
+      color: red;
+    }
+
+    .hamburg,
+    .cancel{
+      cursor: pointer;
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      color: black;
+      display: none;
+      font-size: clamp(2.5rem, 0.5rem + 5vw, 3rem);
+    }
+
+    .nav-container .links{
+      display: flex;
+    }
+
+    .nav-container .links a{
+      position: relative;
+      font-size: 20px;
+      color: black;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: 550;
+      transition: 0.3s linear;
+    }
+
+    .nav-container .links a::before{
+      position: absolute;
+      content: "";
+      bottom: -3px;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background-color: #658584;
+      transition: 0.2s linear;
+    }
+
+    .nav-container .links a:hover::before{
+      width: 100%;
+    }
+
+    .nav-container .links a:hover{
+      color: #658584;
+    }
+
+    .dropdown{
+      z-index: 100;
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translateY(-500px);
+      width: 100%;
+      height: auto;
+      backdrop-filter: blur(4px) brightness(40%);
+      box-shadow: 0 0 20px black;
+      transition: 0.2s linear;
+    }
+
+    .dropdown .links a{
+      display: flex;
+      color: black;
+      text-decoration: none;
+      justify-content: center;
+      padding: 15px 0;
+      align-items: center;
+      transition: 0.2s linear;
+    }
+
+    .dropdown .links a:hover{
+      background-color: #658584;
+    }
+
+    /* Media Queries for smaller devices */
+    @media (max-width: 884px) {
+      nav .logo{
+        position: absolute;
+        top: 16px;
+        left: 15px;
+        font-size: 1.5rem;
+      }
+
+      .nav-container .links{
+        display: none;
+      }
+
+      .hamburg,
+      .cancel{
+        display: block;
+        margin-top: 40px;
+      }
+    }
+  </style>
+    <style>
+        #teamScoresChart {
+            max-width: 100%;
+            height: auto;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .card {
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <style>
+        i{
+            color: white;
+            font-size: 30px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .footer-p{
+          font-weight: 600;
+          color: black;
+          cursor: pointer;
+        }
+        .footer-p:hover{
+          color: white;
+        }
+        footer a{
+          text-decoration: dotted;
+        }
+        footer .fab{
+          font-size: 29px;
+          color: white ;
+        }
+       
+    
+      footer .fab:hover {
+        color: #38af91;
+        transform: scale(1.1);
+      }
+    </style>
+    <style>
+        .carousel-item img {
+            max-width: 100%;
+            height: auto; /* This will ensure it takes full screen height */
+            object-fit: cover; /* Ensures the image fits the container nicely */
+            margin-top: 140px;
+        }
+    </style>
+
+<style>
+  .chart-container {
+      width: 80%;
+      margin: auto;
+  }
+
+  .bar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+     
+  }
+
+  .bar-label {
+      width: 20%;
+      padding-right: 15px;
+      text-align: right;
+  }
+
+  .bar-visual {
+      width: 80%;
+      background-color: #f1f1f1;
+      height: 30px;
+      position: relative;
+      border-radius: 15px;
+  }
+
+  .bar-fill {
+      height: 100%;
+      color:#fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 10px;
+      box-sizing: border-box;
+      border-radius: 15px;
+  }
+
+  /* Custom colors for each team */
+  .teamA { background-color: #009e60; }
+  .teamB { background-color: magenta; }
+  .teamC { background-color: #0047AB; }
+  .teamD { background-color: #FFBF00; }
+
+  /* Bar text style */
+  .bar-text {
+      position: absolute;
+      right: 5px;
+      color: black;
+      font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+    <header class="header" style="position: fixed; z-index: 4; " >
+        <nav>
+          <div class="nav-container">
+            <div class="logo-image" data-aos="zoom-in" data-aos-duration="1500">
+              <img src="/images/NOOR-SHOW-LOGO-PNG.png" alt="logo" style="width: 150px; height: 150px; margin-top: 10px;">
+            </div>
+            <div class="links" style="margin-top: 0px;">
+              <div class="link" data-aos="flip-up" data-aos-duration="1500" data-aos-delay="100"><a href="/home">Home</a></div>
+              <div class="link" data-aos="flip-up" data-aos-duration="1500" data-aos-delay="200"><a href="/about">about</a></div>
+              <div class="link" data-aos="flip-up" data-aos-duration="1500" data-aos-delay="300"><a href="/gallery">Gallery</a></div>
+              <div class="link" data-aos="flip-up" data-aos-duration="1500" data-aos-delay="400"><a href="/result">Results</a></div>
+              <div class="link" data-aos="flip-up" data-aos-duration="1500" data-aos-delay="500"><a href="/announcements">Announcements</a></div>
+             
+                  <i class="fas fa-bell"></i>
+                </div>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+          </div>
+          <div class="dropdown">
+            <div class="links">
+              <a href="/home">Home</a>
+              <a href="/about">about</a>
+              <a href="/gallery">Gallery</a>
+              <a href="/result">Results</a>
+              <a href="/announcements">Announcements</a>
+              <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+          </div>
+        </nav>
+      </header>
+    
+
+<section>
+
+  <div class="container-fluid p-0" >
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
+        <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+                <img src="/images/THAMBNAIL SIDE 1.jpg" alt="Image 1">
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+                <img src="/images/THAMBNAIL SIDE 2.jpg" alt="Image 2">
+            </div>
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+                <img src="/images/THAMBNAIL SIDE 3.jpg" alt="Image 3">
+            </div>
+            <!-- Slide 4 -->
+            <div class="carousel-item">
+                <img src="/images/THAMBNAIL SIDE 4.jpg" alt="Image 4">
+            </div>
+            <!-- Slide 5 -->
+            <div class="carousel-item">
+                <img src="/images/THAMBNAIL SIDE 5.jpg" alt="Image 5">
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<div class="chart-container">
+  <div class="text-center mt-5">
+    <h1 style="font-family: 'poppins',sans-serif;">Total Result</h1>
+  </div>
+    <% 
+        // Find the maximum score
+        const maxScore = Math.max(score.teamA, score.teamB, score.teamC, score.teamD);
+    %>
+    <div class="bar mt-5">
+        <div class="bar-label">BIDAR</div>
+        <div class="bar-visual">
+            <div class="bar-fill teamA" style="width: <%= (score.teamA / maxScore) * 100 %>%;">
+                <div class="bar-text"><%= score.teamA %></div>
+            </div>
+        </div>
+    </div>
+    <div class="bar">
+        <div class="bar-label">BIJAPUR</div>
+        <div class="bar-visual">
+            <div class="bar-fill teamB" style="width: <%= (score.teamB / maxScore) * 100 %>%;">
+                <div class="bar-text"><%= score.teamB %></div>
+            </div>
+        </div>
+    </div>
+    <div class="bar">
+        <div class="bar-label">GULBERGA</div>
+        <div class="bar-visual">
+            <div class="bar-fill teamC" style="width: <%= (score.teamC / maxScore) * 100 %>%;">
+                <div class="bar-text"><%= score.teamC %></div>
+            </div>
+        </div>
+    </div>
+    <div class="bar">
+        <div class="bar-label">DECCAN</div>
+        <div class="bar-visual">
+            <div class="bar-fill teamD" style="width: <%= (score.teamD / maxScore) * 100 %>%;">
+                <div class="bar-text"><%= score.teamD %></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Section with 6 cards -->
+    <div class="container card-container " style="margin-top: 60px;">
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Bidaya Topper</h5>
+                <p class="card-text">Name: <%= score.bidayatopper %></p>
+                <p class="card-text">Score: <%= score.bidayatopperscore %></p>
+            </div>
+        </div>
+        <!-- Add 5 more cards for other categories -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Uoola Topper</h5>
+                <p class="card-text">Name: <%= score.uoolatopper %></p>
+                <p class="card-text">Score: <%= score.uoolatopperscore %></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Thaniya Topper</h5>
+                <p class="card-text">Name: <%= score.thaniyatopper %></p>
+                <p class="card-text">Score: <%= score.thaniyatopperscore %></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Thanawiyya Topper</h5>
+                <p class="card-text">Name: <%= score.thabawiyayatopper %></p>
+                <p class="card-text">Score: <%= score.thanawiyatopperscore %></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Aliya Topper</h5>
+                <p class="card-text">Name: <%= score.aliyyatopper %></p>
+                <p class="card-text">Score: <%= score.aliyatopperscore %></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Kulliya Top Team</h5>
+                <p class="card-text">Name: <%= score.kulliyatopper %></p>
+                <p class="card-text">Score: <%= score.kulliyatopperscore %></p>
+            </div>
+        </div>
+    </div>
+
+    <section style="margin-top: 60px;">
+        <div class="container">
+            <div class="container mt-3">
+                <label for="teamDropdown" class="form-label">Category Based Result</label>
+                <select class="form-select" id="teamDropdown" name="team">
+                    <option selected disabled>Select a team</option>
+                    <option value="/result/bidaya">Bidaya</option>
+                    <option value="/result/uoola">Uoola</option>
+                    <option value="/result/thaniya">Thaniya</option>
+                    <option value="/result/thanawiyya">Thanawiyya</option>
+                    <option value="/result/aliya">Aliya</option>
+                    <option value="/result/kulliya">Kulliya</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <footer style="margin-top: 20px;background-color: #fcc918;">
+        <div class="container:fluid">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="" style="margin-top: 30px;margin-left: 10px;padding: 20px;">
+                    <img src="/images/footer png.png" style="width: 50%; height: auto;">
+                </div>
+            </div>
+            <div class="col-md-4" style="margin-top: 20px;">
+                <div style="margin-top: 0px;" class="text-center">
+                   <a href="https://youtube.com/@noorulhudaonlive2722?si=YNLVjyCyOtFtS8O0" ><i class="fab fa-youtube"></i></a>
+                   <a href="
+                   https://www.instagram.com/noorshow_nhia?igsh=OG11b2l2Nnc2ZmY5" ><i class="fab fa-instagram"></i></a>
+                   <a href="https://t.me/noorshowphotos" ><i class="fab fa-telegram"></i></a>
+                    <br>
+                    <div style="margin-top: 5px;">
+                    <img src="/images/pattern.png" alt="" style="width: 20%;height: auto;">
+                  </div>
+                </div>
+               
+            </div>
+            </div>
+            <hr style="color: black;">
+            <div class="row">
+              <div class="col-md-12 text-center">
+              <p style="margin-left: 0px;">&copy; 2024 NoorShow 2k24. Designed by<a href="
+                https://www.instagram.com/irfan_irfu_063?igsh=MTJiaWlnMW5lMWpsYw=="><span class="footer-p">Mahammad Irfan</span></a>, in cooperation with <a href="
+                https://www.instagram.com/gizmodesign.hub?igsh=MWN1anF5dW9kbHpncA==" ><span class="footer-p">gizmodesign.hub</span></a>.</p>
+            </div>
+            </div>
+        </div>
+    
+    
+    
+      </footer> 
+    
+
+         
+
+<script>
+    document.getElementById('teamDropdown').addEventListener('change', function () {
+        const selectedTeamUrl = this.value;
+        if (selectedTeamUrl) {
+            window.location.href = selectedTeamUrl;
+        }
+    });
+</script>
+<script>
+    const prev = document.querySelector("#prev");
+  const next = document.querySelector("#next");
+  
+  let carouselVp = document.querySelector("#carousel-vp");
+  
+  let cCarouselInner = document.querySelector("#cCarousel-inner");
+  let carouselInnerWidth = cCarouselInner.getBoundingClientRect().width;
+  
+  let leftValue = 0;
+  
+  // Variable used to set the carousel movement value (card's width + gap)
+  const totalMovementSize =
+  parseFloat(
+    document.querySelector(".cCarousel-item").getBoundingClientRect().width,
+    10
+  ) +
+  parseFloat(
+    window.getComputedStyle(cCarouselInner).getPropertyValue("gap"),
+    10
+  );
+  
+  prev.addEventListener("click", () => {
+  if (!leftValue == 0) {
+    leftValue -= -totalMovementSize;
+    cCarouselInner.style.left = leftValue + "px";
+  }
+  });
+  
+  next.addEventListener("click", () => {
+  const carouselVpWidth = carouselVp.getBoundingClientRect().width;
+  if (carouselInnerWidth - Math.abs(leftValue) > carouselVpWidth) {
+    leftValue -= totalMovementSize;
+    cCarouselInner.style.left = leftValue + "px";
+  }
+  });
+  
+  const mediaQuery510 = window.matchMedia("(max-width: 510px)");
+  const mediaQuery770 = window.matchMedia("(max-width: 770px)");
+  
+  mediaQuery510.addEventListener("change", mediaManagement);
+  mediaQuery770.addEventListener("change", mediaManagement);
+  
+  let oldViewportWidth = window.innerWidth;
+  
+  function mediaManagement() {
+  const newViewportWidth = window.innerWidth;
+  
+  if (leftValue <= -totalMovementSize && oldViewportWidth < newViewportWidth) {
+    leftValue += totalMovementSize;
+    cCarouselInner.style.left = leftValue + "px";
+    oldViewportWidth = newViewportWidth;
+  } else if (
+    leftValue <= -totalMovementSize &&
+    oldViewportWidth > newViewportWidth
+  ) {
+    leftValue -= totalMovementSize;
+    cCarouselInner.style.left = leftValue + "px";
+    oldViewportWidth = newViewportWidth;
+  }
+  }
+  
+  </script>
+
+
+
+
+
+  <script>
+    function toggleContent() {
+      var content = document.getElementById("clickContent");
+      if (content.style.display === "none" || content.style.display === "") {
+        content.style.display = "block";
+      } else {
+        content.style.display = "none";
+      }
+    }
+  </script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Check if announcements were viewed
+      let announcementViewed = localStorage.getItem('announcementViewed');
+  
+      // If not viewed, show red bell icon
+      if (!announcementViewed) {
+        document.getElementById('bell-icon').style.display = 'inline-block';
+      } else {
+        // Hide bell icon if already viewed
+        document.getElementById('bell-icon').style.display = 'none';
+      }
+  
+      // Click event to simulate opening the announcement page
+      document.querySelector('.link a[href="#"]').addEventListener('click', function () {
+        localStorage.setItem('announcementViewed', 'true');
+        document.getElementById('bell-icon').style.display = 'none';
+      });
+    });
+  
+    // Hamburger toggle functions for mobile
+    function hamburg() {
+      document.querySelector('.dropdown').style.transform = 'translateY(0)';
+      document.querySelector('.hamburg').style.display = 'none';
+      document.querySelector('.cancel').style.display = 'block';
+    }
+  
+    function cancel() {
+      document.querySelector('.dropdown').style.transform = 'translateY(-500px)';
+      document.querySelector('.cancel').style.display = 'none';
+      document.querySelector('.hamburg').style.display = 'block';
+    }
+  </script>
+   
+  
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+  AOS.init({offset:0});
+  </script>
+  
+  <script >
+  function hamburg(){
+  const navbar = document.querySelector(".dropdown")
+  navbar.style.transform = "translateY(0px)"
+  }
+  
+  function cancel(){
+  const navbar = document.querySelector(".dropdown")
+  navbar.style.transform = "translateY(-500px)"
+  }
+  </script>
+
+</body>
+</html>

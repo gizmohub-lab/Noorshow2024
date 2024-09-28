@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Announcements</title>
+  <link rel="icon" type="image/png" sizes="20x20" href="/images/NOOR-SHOW-LOGO-PNG.png">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+    *{
+      padding: 0;
+      margin: 0;
+      font-family: 'poppins', sans-serif;
+      box-sizing: border-box;
+    }
+
+    header{
+      width: 100%;
+      height: 14vh;
+      overflow: hidden;
+      background-color: white;
+    }
+
+    nav{
+      width: 100%;
+      height: 14vh;
+      position: sticky;
+      background-color: white;
+      z-index: 1000;
+    }
+
+    .nav-container{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .logo{
+      color: black;
+      font-size: 1rem;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    .logo span{
+      color: #30a8e5;
+      text-shadow: 0 0 10px #30a8e5;
+    }
+
+    .bell-icon {
+      font-size: 1.5rem;
+      color: red;
+      display: inline-block;
+      position: relative;
+    }
+
+    .bell-icon i {
+      font-size: 1.8rem;
+      color: red;
+    }
+
+    .hamburg,
+    .cancel{
+      cursor: pointer;
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      color: black;
+      display: none;
+      font-size: clamp(2.5rem, 0.5rem + 5vw, 3rem);
+    }
+
+    .nav-container .links{
+      display: flex;
+    }
+
+    .nav-container .links a{
+      position: relative;
+      font-size: 20px;
+      color: black;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: 550;
+      transition: 0.3s linear;
+    }
+
+    .nav-container .links a::before{
+      position: absolute;
+      content: "";
+      bottom: -3px;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background-color: #658584;
+      transition: 0.2s linear;
+    }
+
+    .nav-container .links a:hover::before{
+      width: 100%;
+    }
+
+    .nav-container .links a:hover{
+      color: #658584;
+    }
+
+    .dropdown{
+      z-index: 100;
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translateY(-500px);
+      width: 100%;
+      height: auto;
+      backdrop-filter: blur(4px) brightness(40%);
+      box-shadow: 0 0 20px black;
+      transition: 0.2s linear;
+    }
+
+    .dropdown .links a{
+      display: flex;
+      color: black;
+      text-decoration: none;
+      justify-content: center;
+      padding: 15px 0;
+      align-items: center;
+      transition: 0.2s linear;
+    }
+
+    .dropdown .links a:hover{
+      background-color: #658584;
+    }
+
+    /* Media Queries for smaller devices */
+    @media (max-width: 884px) {
+      nav .logo{
+        position: absolute;
+        top: 16px;
+        left: 15px;
+        font-size: 1.5rem;
+      }
+
+      .nav-container .links{
+        display: none;
+      }
+
+      .hamburg,
+      .cancel{
+        display: block;
+        margin-top: 40px;
+      }
+    }
+  </style>
+    
+    <style>
+        i{
+            color: white;
+            font-size: 30px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .footer-p{
+          font-weight: 600;
+          color: black;
+          cursor: pointer;
+        }
+        .footer-p:hover{
+          color: white;
+        }
+        footer a{
+          text-decoration: dotted;
+        }
+        footer .fab{
+          font-size: 29px;
+          color: white ;
+        }
+       
+  
+      footer .fab:hover {
+        color: #38af91;
+        transform: scale(1.1);
+      }
+    </style>
+    </style>
+    
+
+
+<style>
+    .carousel-item img {
+        max-width: 100%;
+        height: auto; /* This will ensure it takes full screen height */
+        object-fit: cover; /* Ensures the image fits the container nicely */
+        margin-top: 140px;
+    }
+</style>
+</head>
+<body>
+    <header class="header" style="position: fixed; z-index: 4; " >
+        <nav>
+          <div class="nav-container">
+            <div class="logo-image" data-aos="zoom-in" data-aos-duration="1500">
+              <img src="/images/NOOR-SHOW-LOGO-PNG.png" alt="logo" style="width: 150px; height: 150px; margin-top: 10px;">
+            </div>
+            <div class="links" style="margin-top: 0px;">
+              <div class="link" data-aos="flip-up" data-aos-duration="1500" data-aos-delay="100"><a href="/home">Home</a></div>
+              <div class="link" data-aos="flip-up" data-aos-duration="1500" data-aos-delay="200"><a href="/about">about</a></div>
+              <div class="link" data-aos="flip-up" data-aos-duration="1500" data-aos-delay="300"><a href="/gallery">Gallery</a></div>
+              <div class="link" data-aos="flip-up" data-aos-duration="1500" data-aos-delay="400"><a href="/result">Results</a></div>
+              <div class="link" data-aos="flip-up" data-aos-duration="1500" data-aos-delay="500"><a href="/announcements">Announcements</a></div>
+             
+                  <i class="fas fa-bell"></i>
+                </div>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+          </div>
+          <div class="dropdown">
+            <div class="links">
+              <a href="/home">Home</a>
+              <a href="/about">about</a>
+              <a href="/gallery">Gallery</a>
+              <a href="/result">Results</a>
+              <a href="/announcements">Announcements</a>
+              <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+          </div>
+        </nav>
+      </header>
+    
+
+
+      <section>
+
+        <div class="container-fluid p-0" >
+          <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
+              <div class="carousel-inner">
+                  <!-- Slide 1 -->
+                  <div class="carousel-item active">
+                      <img src="/images/THAMBNAIL SIDE 1.jpg" alt="Image 1">
+                  </div>
+                  <!-- Slide 2 -->
+                  <div class="carousel-item">
+                      <img src="/images/THAMBNAIL SIDE 2.jpg" alt="Image 2">
+                  </div>
+                  <!-- Slide 3 -->
+                  <div class="carousel-item">
+                      <img src="/images/THAMBNAIL SIDE 3.jpg" alt="Image 3">
+                  </div>
+                  <!-- Slide 4 -->
+                  <div class="carousel-item">
+                      <img src="/images/THAMBNAIL SIDE 4.jpg" alt="Image 4">
+                  </div>
+                  <!-- Slide 5 -->
+                  <div class="carousel-item">
+                      <img src="/images/THAMBNAIL SIDE 5.jpg" alt="Image 5">
+                  </div>
+              </div>
+          </div>
+      </div>
+      </section>
+
+
+      <section >
+    <div class="container mt-5 " >
+        <h2 class="text-center" >Announcements</h2>
+        <div class="list-group">
+            <% announcements.forEach(announcement => { %>
+                <div class="list-group-item" style="margin-top: 20px; border-radius: 15px;">
+                    <h5 style="font-size: 30px; font-weight: bold;font-family: 'poppins';"><%= announcement.title %></h5>
+                    <p style="font-size: 20px;"><%= announcement.content %></p>
+                    <small>Created at: <%= announcement.createdAt.toLocaleString() %></small>
+                </div>
+            <% }) %>
+        </div>
+        
+    </div>
+</section>
+
+<footer style="margin-top: 20px;background-color: #fcc918;">
+    <div class="container:fluid">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <div class="" style="margin-top: 30px;margin-left: 10px;padding: 20px;">
+                <img src="/images/footer png.png" style="width: 50%; height: auto;">
+            </div>
+        </div>
+        <div class="col-md-4" style="margin-top: 20px;">
+          <div style="margin-top: 0px;" class="text-center">
+             <a href="https://youtube.com/@noorulhudaonlive2722?si=YNLVjyCyOtFtS8O0" ><i class="fab fa-youtube"></i></a>
+             <a href="
+             https://www.instagram.com/noorshow_nhia?igsh=OG11b2l2Nnc2ZmY5" ><i class="fab fa-instagram"></i></a>
+             <a href="https://t.me/noorshowphotos" ><i class="fab fa-telegram"></i></a>
+              <br>
+              <div style="margin-top: 5px;">
+              <img src="/images/pattern.png" alt="" style="width: 20%;height: auto;">
+            </div>
+          </div>
+         
+      </div>
+        </div>
+        <hr style="color: black;">
+        <div class="row">
+          <div class="col-md-12 text-center">
+          <p style="margin-left: 0px;">&copy; 2024 NoorShow 2k24. Designed by<a href="
+            https://www.instagram.com/irfan_irfu_063?igsh=MTJiaWlnMW5lMWpsYw=="><span class="footer-p">Mahammad Irfan</span></a>, in cooperation with <a href="
+            https://www.instagram.com/gizmodesign.hub?igsh=MWN1anF5dW9kbHpncA==" ><span class="footer-p">gizmodesign.hub</span></a>.</p>
+        </div>
+        </div>
+    </div>
+
+
+
+  </footer> 
+
+
+<script>
+    const prev = document.querySelector("#prev");
+  const next = document.querySelector("#next");
+  
+  let carouselVp = document.querySelector("#carousel-vp");
+  
+  let cCarouselInner = document.querySelector("#cCarousel-inner");
+  let carouselInnerWidth = cCarouselInner.getBoundingClientRect().width;
+  
+  let leftValue = 0;
+  
+  // Variable used to set the carousel movement value (card's width + gap)
+  const totalMovementSize =
+  parseFloat(
+    document.querySelector(".cCarousel-item").getBoundingClientRect().width,
+    10
+  ) +
+  parseFloat(
+    window.getComputedStyle(cCarouselInner).getPropertyValue("gap"),
+    10
+  );
+  
+  prev.addEventListener("click", () => {
+  if (!leftValue == 0) {
+    leftValue -= -totalMovementSize;
+    cCarouselInner.style.left = leftValue + "px";
+  }
+  });
+  
+  next.addEventListener("click", () => {
+  const carouselVpWidth = carouselVp.getBoundingClientRect().width;
+  if (carouselInnerWidth - Math.abs(leftValue) > carouselVpWidth) {
+    leftValue -= totalMovementSize;
+    cCarouselInner.style.left = leftValue + "px";
+  }
+  });
+  
+  const mediaQuery510 = window.matchMedia("(max-width: 510px)");
+  const mediaQuery770 = window.matchMedia("(max-width: 770px)");
+  
+  mediaQuery510.addEventListener("change", mediaManagement);
+  mediaQuery770.addEventListener("change", mediaManagement);
+  
+  let oldViewportWidth = window.innerWidth;
+  
+  function mediaManagement() {
+  const newViewportWidth = window.innerWidth;
+  
+  if (leftValue <= -totalMovementSize && oldViewportWidth < newViewportWidth) {
+    leftValue += totalMovementSize;
+    cCarouselInner.style.left = leftValue + "px";
+    oldViewportWidth = newViewportWidth;
+  } else if (
+    leftValue <= -totalMovementSize &&
+    oldViewportWidth > newViewportWidth
+  ) {
+    leftValue -= totalMovementSize;
+    cCarouselInner.style.left = leftValue + "px";
+    oldViewportWidth = newViewportWidth;
+  }
+  }
+  
+  </script>
+
+
+
+
+
+  <script>
+    function toggleContent() {
+      var content = document.getElementById("clickContent");
+      if (content.style.display === "none" || content.style.display === "") {
+        content.style.display = "block";
+      } else {
+        content.style.display = "none";
+      }
+    }
+  </script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Check if announcements were viewed
+      let announcementViewed = localStorage.getItem('announcementViewed');
+  
+      // If not viewed, show red bell icon
+      if (!announcementViewed) {
+        document.getElementById('bell-icon').style.display = 'inline-block';
+      } else {
+        // Hide bell icon if already viewed
+        document.getElementById('bell-icon').style.display = 'none';
+      }
+  
+      // Click event to simulate opening the announcement page
+      document.querySelector('.link a[href="#"]').addEventListener('click', function () {
+        localStorage.setItem('announcementViewed', 'true');
+        document.getElementById('bell-icon').style.display = 'none';
+      });
+    });
+  
+    // Hamburger toggle functions for mobile
+    function hamburg() {
+      document.querySelector('.dropdown').style.transform = 'translateY(0)';
+      document.querySelector('.hamburg').style.display = 'none';
+      document.querySelector('.cancel').style.display = 'block';
+    }
+  
+    function cancel() {
+      document.querySelector('.dropdown').style.transform = 'translateY(-500px)';
+      document.querySelector('.cancel').style.display = 'none';
+      document.querySelector('.hamburg').style.display = 'block';
+    }
+  </script>
+  
+  
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+  AOS.init({offset:0});
+  </script>
+  
+  <script >
+  function hamburg(){
+  const navbar = document.querySelector(".dropdown")
+  navbar.style.transform = "translateY(0px)"
+  }
+  
+  function cancel(){
+  const navbar = document.querySelector(".dropdown")
+  navbar.style.transform = "translateY(-500px)"
+  }
+  </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const carousel = document.querySelector('.carousel');
+  const leftButton = document.getElementById('left');
+  const rightButton = document.getElementById('right');
+
+  leftButton.addEventListener('click', () => {
+      carousel.scrollBy({
+          left: -carousel.clientWidth,
+          behavior: 'smooth'
+      });
+  });
+
+  rightButton.addEventListener('click', () => {
+      carousel.scrollBy({
+          left: carousel.clientWidth,
+          behavior: 'smooth'
+      });
+  });
+
+  let isDragging = false;
+  let startX;
+  let scrollLeft;
+
+  carousel.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+  });
+
+  carousel.addEventListener('mouseleave', () => {
+      isDragging = false;
+  });
+
+  carousel.addEventListener('mouseup', () => {
+      isDragging = false;
+  });
+
+  carousel.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 2; //scroll-fast
+      carousel.scrollLeft = scrollLeft - walk;
+  });
+});
+</script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  </body>
+  </html>
