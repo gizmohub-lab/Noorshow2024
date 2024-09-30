@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loding...</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #F5F5F5; /* Optional background color */
+        }
+
+        .loader {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: auto;
+        }
+
+        .spinner {
+            border: 20px solid #EAF0F6;
+            border-radius: 50%;
+            border-top: 20px solid 
+            #30a8e5;
+            width: 100%;
+            height: 100%;
+            animation: spinner 4s linear infinite;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        @keyframes spinner {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loader-logo {
+            position: absolute;
+            top: 60%;
+            left: 65%;
+            transform: translate(-50%, -50%);
+            width: 150px; /* Adjust the size as needed */
+            height: auto;
+            z-index: 1; /* Ensure the logo stays on top */
+        }
+    </style>
+</head>
+<body>
+
+<div class="loader">
+    <div class="spinner"></div>
+    <img src="/images/NOOR-SHOW-LOGO-PNG.png" alt="Logo" class="loader-logo">
+</div>
+
+<script>
+    // Redirect to /home after 5 seconds
+    setTimeout(() => {
+        window.location.href = '/home';
+    }, 5000); // 5000 milliseconds = 5 seconds
+</script>
+
+</body>
+</html>
