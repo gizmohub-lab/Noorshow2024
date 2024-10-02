@@ -96,32 +96,46 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        let scrollDirection = 'down'; // Initial scroll direction
-        let scrollSpeed = 1; // Pixels per interval
-        let intervalTime = 20; // Interval time in milliseconds
-      
-        function autoScroll() {
-          let scrollHeight = document.documentElement.scrollHeight;
-          let clientHeight = document.documentElement.clientHeight;
-          let maxScrollTop = scrollHeight - clientHeight;
-      
-          if (scrollDirection === 'down') {
+  let scrollDirection = 'down'; // Initial scroll direction
+let scrollSpeed = 1; // Pixels per interval
+let intervalTime = 20; // Interval time in milliseconds
+let autoScrollInterval;
+let userIsScrolling = false;
+let scrollResumeTime = 2000; // 2 seconds delay to resume auto-scroll after manual scroll
+
+function autoScroll() {
+    if (!userIsScrolling) {
+        let scrollHeight = document.documentElement.scrollHeight;
+        let clientHeight = document.documentElement.clientHeight;
+        let maxScrollTop = scrollHeight - clientHeight;
+
+        if (scrollDirection === 'down') {
             window.scrollBy(0, scrollSpeed);
             if (window.scrollY >= maxScrollTop) {
-              scrollDirection = 'up'; // Change direction to up
+                scrollDirection = 'up'; // Change direction to up
             }
-          } else if (scrollDirection === 'up') {
+        } else if (scrollDirection === 'up') {
             window.scrollBy(0, -scrollSpeed);
             if (window.scrollY <= 0) {
-              scrollDirection = 'down'; // Change direction to down
+                scrollDirection = 'down'; // Change direction to down
             }
-          }
         }
-      
-        // Start scrolling
-        setInterval(autoScroll, intervalTime);
-      </script>
+    }
+}
+
+// Detect user scroll and pause auto-scroll for a short duration
+window.addEventListener('scroll', function () {
+    userIsScrolling = true;
+
+    // Set a timer to resume auto-scroll after the user stops scrolling
+    clearTimeout(autoScrollInterval); 
+    autoScrollInterval = setTimeout(function () {
+        userIsScrolling = false; // Resume auto-scroll
+    }, scrollResumeTime);
+});
+
+// Start auto-scrolling immediately
+setInterval(autoScroll, intervalTime);
+
 </body>
 </html>
