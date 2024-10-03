@@ -91,7 +91,33 @@
             </div>
         <% }) %>
     </div>
-
+ 
+    <script>
+        let scrollDirection = 'down'; // Initial scroll direction
+        let scrollSpeed = 1; // Pixels per interval
+        let intervalTime = 20; // Interval time in milliseconds
+      
+        function autoScroll() {
+          let scrollHeight = document.documentElement.scrollHeight;
+          let clientHeight = document.documentElement.clientHeight;
+          let maxScrollTop = scrollHeight - clientHeight;
+      
+          if (scrollDirection === 'down') {
+            window.scrollBy(0, scrollSpeed);
+            if (window.scrollY >= maxScrollTop) {
+              scrollDirection = 'up'; // Change direction to up
+            }
+          } else if (scrollDirection === 'up') {
+            window.scrollBy(0, -scrollSpeed);
+            if (window.scrollY <= 0) {
+              scrollDirection = 'down'; // Change direction to down
+            }
+          }
+        }
+      
+        // Start scrolling
+        setInterval(autoScroll, intervalTime);
+      </script>
    
 
 
